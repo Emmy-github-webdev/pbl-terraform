@@ -6,9 +6,6 @@ variable "vpc_cidr" {
   default = "172.16.0.0/16"
 }
 
-provider "aws" {
-  region = var.region
-}
 variable "enable_dns_support" {
   default = "true"
 }
