@@ -1,3 +1,5 @@
+# The entire section create a certiface, public zone, and validate the certificate using DNS method
+
 # Create the certificate using a wildcard for all the domains created in oche.link
 resource "aws_acm_certificate" "oche" {
   domain_name       = "*.oche.link"
@@ -46,6 +48,7 @@ resource "aws_route53_record" "tooling" {
     evaluate_target_health = true
   }
 }
+
 
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
