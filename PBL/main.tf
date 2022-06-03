@@ -1,7 +1,7 @@
 
 # Note: The bucket name may not work for you since buckets are unique globally in AWS, so you must give it a unique name.
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "dev-terraform-bucket"
+  bucket = "emmanuel-dev-terraform-bucket"
   # Enable versioning so we can see the full revision history of our state files
   versioning {
     enabled = true
@@ -39,8 +39,8 @@ module "VPC" {
   enable_classiclink                  = var.enable_classiclink
   preferred_number_of_public_subnets  = var.preferred_number_of_public_subnets
   preferred_number_of_private_subnets = var.preferred_number_of_private_subnets
-  private_subnets                     = [for i in range(1, 8, 2) : cidrsubnet(var.vpc_cidr, 8, 1)]
-  public_subnets                      = [for i in range(2, 5, 2) : cidrsubnet(var.vpc_cidr, 8, 1)]
+  private_subnets                     = [for i in range(1, 8, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+  public_subnets                      = [for i in range(2, 5, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
 
 }
 
